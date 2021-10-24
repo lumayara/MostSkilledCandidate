@@ -4,8 +4,17 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-let candidates = [];
-// for testing purposes: let candidates = [{id:"a","name": "b", "skills":"c"}];
+// let candidates = [];
+
+/** 
+ * for testing purposes. Must delete if putting in codility assessment 
+ * **/
+let candidates = [
+    {id:"a",name: "b", skills:["c", "b"]},
+    {id:"b",name: "ba", skills:["c"]},
+    {id:"c",name: "be", skills:["c", "a"]}
+
+];
 
 function addCandidate(candidate){
   candidates.push(candidate);
@@ -15,6 +24,7 @@ function searchBestCandidate(skills){
     let candidatesWithSkills = [];
     candidates.forEach(candidate => {
         let candidateFiltered = candidate.skills.filter(e => skills.includes(e));
+   
         if(candidateFiltered.length> 0){
             candidatesWithSkills.push(candidate);
         }
